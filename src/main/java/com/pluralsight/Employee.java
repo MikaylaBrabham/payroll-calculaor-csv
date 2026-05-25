@@ -19,7 +19,6 @@ public class Employee {
 
     //add get/set
 
-
     public float getId() {
         return id;
     }
@@ -34,5 +33,12 @@ public class Employee {
 
     public float getPayRate() {
         return payRate;
+    }
+
+    // add derived properties
+
+    public float getGrossPay() {
+        float grossPay = hoursWorked * payRate;
+        return grossPay;
     }
 }

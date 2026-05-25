@@ -32,10 +32,10 @@ public class PayrollCalculator {
 
                 Employee employee =
                         new Employee(
-                                (float) id,
+                                 id,
                                 name,
-                                (float) hoursWorked,
-                                (float) payRate);
+                                hoursWorked,
+                                payRate);
 
                 System.out.printf(
                         "ID: %d Name: %s Gross Pay: %.2f%n",
@@ -49,6 +49,7 @@ public class PayrollCalculator {
         catch (Exception e) {
 
             System.out.println("Error reading payroll file.");
+            e.printStackTrace();
         }
     }
 }

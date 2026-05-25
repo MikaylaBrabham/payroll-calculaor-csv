@@ -3,14 +3,14 @@ package com.pluralsight;
 public class Employee {
 
     //added properties
-    float id;
+    int id;
     String name;
-    float hoursWorked;
-    float payRate;
+    double hoursWorked;
+    double payRate;
 
     //add constructors
 
-    public Employee(float id, String name, float hoursWorked, float payRate) {
+    public Employee(int id, String name, double hoursWorked, double payRate) {
         this.id = id;
         this.name = name;
         this.hoursWorked = hoursWorked;
@@ -19,7 +19,7 @@ public class Employee {
 
     //add get/set
 
-    public float getId() {
+    public int getId() {
         return id;
     }
 
@@ -27,18 +27,18 @@ public class Employee {
         return name;
     }
 
-    public float getHoursWorked() {
+    public double getHoursWorked() {
         return hoursWorked;
     }
 
-    public float getPayRate() {
+    public double getPayRate() {
         return payRate;
     }
 
     // add derived properties
 
-    public float getGrossPay() {
-        float grossPay = hoursWorked * payRate;
+    public double getGrossPay() {
+        double grossPay = hoursWorked * payRate;
         return grossPay;
     }
 }

@@ -3,11 +3,23 @@ package com.pluralsight;
 import java.io.BufferedReader;
 import java.io.FileNotFoundException;
 import java.io.FileReader;
+import java.util.Scanner;
 
 public class PayrollCalculator {
     //add main
     public static void main(String[] args) {
         //add try to enter file reader
+
+        //add my scanner
+        Scanner myScanner = new Scanner(System.in);
+
+        //prompt the  user to enter name of file
+        System.out.println("Enter the name of the employee file to process: ");
+        String input = myScanner.nextLine();
+
+        //prompt the user to create name of file
+        System.out.println("Enter the name of the payroll file to create: ");
+        String output = myScanner.nextLine();
 
         try {
             //add buff and file

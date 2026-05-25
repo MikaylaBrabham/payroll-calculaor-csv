@@ -1,8 +1,6 @@
 package com.pluralsight;
 
-import java.io.BufferedReader;
-import java.io.FileNotFoundException;
-import java.io.FileReader;
+import java.io.*;
 import java.util.Scanner;
 
 public class PayrollCalculator {
@@ -22,15 +20,16 @@ public class PayrollCalculator {
         String output = myScanner.nextLine();
 
         try {
-            //add buff and file
-            BufferedReader reader = new BufferedReader(new FileReader("employee.csv"));
+            //add buff and file reader and writer
+            BufferedReader reader = new BufferedReader(new FileReader(input));
+            BufferedWriter writer = new BufferedWriter(new FileWriter(output));
 
             //add input
-            String input;
+            String inputs;
 
             //add while to print
-            while ((input = reader.readLine()) != null) {
-                String[] tokens = input.split("\\|");
+            while ((inputs = reader.readLine()) != null) {
+                String[] tokens = inputs.split("\\|");
                 int id =
                         Integer.parseInt(tokens[0]);
 
@@ -44,23 +43,26 @@ public class PayrollCalculator {
 
                 Employee employee =
                         new Employee(
-                                 id,
+                                id,
                                 name,
                                 hoursWorked,
                                 payRate);
 
-                System.out.printf(
-                        "ID: %d Name: %s Gross Pay: %.2f%n",
-                        employee.getId(),
-                        employee.getName(),
-                        employee.getGrossPay());
+               writer.write(employee.getId() + "|" +
+                       employee.getName() + "|" +
+                       String.format("%.2f", employee.getGrossPay()));
+
+                writer.newLine();
             }
-
+// close reader and writer
             reader.close();
-        }
-        catch (Exception e) {
+            writer.close();
+            //create output that allows the user to know their state was successfully created
 
-            System.out.println("Error reading payroll file.");
+            System.out.println("file successfully created");
+        }catch (Exception e) {
+
+            System.out.println("Error creating payroll file.");
             e.printStackTrace();
         }
     }
